@@ -3,9 +3,23 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">oi</header>
-    </div>
+    <main className="App">
+      <section>
+        <h1 className="title">
+          Update twitter description with currently playing music
+        </h1>
+        <div className="action">
+          <button className="btn btn-spotify">
+            <img src="/icons/spotify.svg" alt="spotify icon" />
+            Log in with spotify
+          </button>
+          <button className="btn btn-twitter">
+            <img src="/icons/twitter.svg" alt="twitter icon" />
+            Log in with twitter
+          </button>
+        </div>
+      </section>
+    </main>
   );
 }
 
