@@ -4,6 +4,7 @@ import express from "express";
 import { TwitterApi } from "twitter-api-v2";
 import { authorization_spotify } from "./routes/spotify";
 import cors from "cors";
+import fetch from "node-fetch";
 
 const port = process.env.PORT || 4000;
 const corsOptions = {
@@ -38,7 +39,7 @@ if (API_KEY_TWITTER && API_KEY_SECRET_TWITTER) {
       const response = await fetch(
         `http://localhost:${port}/get-currently-playing`
       );
-      const result = await response.json();
+      const result: any = await response.json();
 
       if (result.error) {
         await fetch(`http://localhost:${port}/refresh_token`);

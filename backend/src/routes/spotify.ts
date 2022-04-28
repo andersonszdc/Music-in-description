@@ -1,6 +1,7 @@
 import { Router } from "express";
 import queryString from "query-string";
 import { generateRandomString } from "../utils/generateRandomString";
+import fetch from "node-fetch";
 
 const router = Router();
 const redirect_uri = process.env.REDIRECT_URI;
@@ -54,7 +55,7 @@ router.get("/callback", (req, res) => {
 
     fetch("https://accounts.spotify.com/api/token", options)
       .then((result) => result.json())
-      .then((result) => {
+      .then((result: any) => {
         if (result.access_token) {
           access_token = result.access_token;
           refresh_token = result.refresh_token;
@@ -83,7 +84,7 @@ router.get("/refresh_token", (req, res) => {
 
   fetch("https://accounts.spotify.com/api/token", options)
     .then((result) => result.json())
-    .then((result) => {
+    .then((result: any) => {
       refresh_token = result.refresh_token;
       res.json(result);
     })
