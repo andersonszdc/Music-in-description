@@ -85,7 +85,7 @@ router.get("/refresh_token", (req, res) => {
   fetch("https://accounts.spotify.com/api/token", options)
     .then((result) => result.json())
     .then((result: any) => {
-      refresh_token = result.refresh_token;
+      access_token = result.access_token;
       res.json(result);
     })
     .catch((error) => console.log(error));
