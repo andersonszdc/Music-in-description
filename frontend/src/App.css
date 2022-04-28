@@ -11,22 +11,27 @@
   column-gap: 16px;
 }
 
-.btn {
+.btn-wrapper {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.btn-link {
   color: #0f1419;
   padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   transition: 0.1s ease-out;
+  text-decoration: none;
 }
 
-.btn:hover {
+.btn-link:hover {
   opacity: 0.75;
 }
 

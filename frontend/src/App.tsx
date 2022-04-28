@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./App.css";
 
-function App() {
+const App = () => {
+  const location = useLocation();
+  const [isLogged, setLogged] = useState(false);
+
+  useEffect(() => {
+    if (location.search) {
+      fetch(`${process.env.REACT_APP_BASE_API_URL}/callback${location.search}`)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+          result.success && setLogged(true);
+        });
+    }
+    return () => {
+      setLogged(false);
+    };
+  }, [location]);
+
   return (
     <main className="App">
       <section>
@@ -9,18 +27,28 @@ function App() {
           Update twitter description with currently playing music
         </h1>
         <div className="action">
-          <button className="btn btn-spotify">
-            <img src="/icons/spotify.svg" alt="spotify icon" />
-            Log in with spotify
+          <button className="btn-wrapper">
+            <a
+              className="btn-link btn-spotify"
+              href="http://localhost:5050/login"
+            >
+              <img src="/icons/spotify.svg" alt="spotify icon" />
+              {isLogged ? "Logged" : "Log in with spotify"}
+            </a>
           </button>
-          <button className="btn btn-twitter">
-            <img src="/icons/twitter.svg" alt="twitter icon" />
-            Log in with twitter
+          <button className="btn-wrapper">
+            <a
+              className="btn-link btn-twitter"
+              href="http://localhost:5050/login"
+            >
+              <img src="/icons/twitter.svg" alt="twitter icon" />
+              Log in with twitter
+            </a>
           </button>
         </div>
       </section>
     </main>
   );
-}
+};
 
 export default App;
