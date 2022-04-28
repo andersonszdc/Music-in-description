@@ -34,7 +34,6 @@ if (API_KEY_TWITTER && API_KEY_SECRET_TWITTER) {
   });
 
   (async () => {
-    await userClient.appLogin();
     setInterval(async () => {
       const response = await fetch(
         "http://localhost:5050/get-currently-playing"
@@ -42,10 +41,8 @@ if (API_KEY_TWITTER && API_KEY_SECRET_TWITTER) {
       const result = await response.json();
 
       if (result.error) {
-        const res_refresh = await fetch("http://localhost:5050/refresh_token");
-        const result_refresh = await res_refresh.json();
+        await fetch("http://localhost:5050/refresh_token");
         console.log(result);
-        console.log(result_refresh);
       } else {
         if (result.message) {
           // spotify desligado
