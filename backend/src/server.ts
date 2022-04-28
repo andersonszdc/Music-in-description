@@ -37,12 +37,12 @@ if (API_KEY_TWITTER && API_KEY_SECRET_TWITTER) {
   (async () => {
     setInterval(async () => {
       const response = await fetch(
-        `http://localhost:${port}/get-currently-playing`
+        `${process.env.BASE_API_UL}/get-currently-playing`
       );
       const result: any = await response.json();
 
       if (result.error) {
-        await fetch(`http://localhost:${port}/refresh_token`);
+        await fetch(`${process.env.BASE_API_UL}/refresh_token`);
         console.log(result);
       } else {
         if (result.message) {
