@@ -7,9 +7,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/typescript/bin/tsc",
     "dev": "npx ts-node-dev --transpile-only src/server.ts",
-    "start": "npm run build && node dist/server"
+    "postinstall": "tsc",
+    "start": "node dist/server.js"
   },
   "author": "",
   "license": "ISC",
