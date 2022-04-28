@@ -3,7 +3,7 @@ import queryString from "query-string";
 import { generateRandomString } from "../utils/generateRandomString";
 
 const router = Router();
-const redirect_uri = `http://localhost:3000/callback`;
+const redirect_uri = process.env.REDIRECT_URI;
 const client_id = process.env.CLIENT_ID_SPOTIFY;
 const client_secret = process.env.CLIENT_SECRET_SPOTIFY;
 
@@ -55,9 +55,13 @@ router.get("/callback", (req, res) => {
     fetch("https://accounts.spotify.com/api/token", options)
       .then((result) => result.json())
       .then((result) => {
-        access_token = result.access_token;
-        refresh_token = result.refresh_token;
-        res.json(result);
+        if (result.access_token) {
+          access_token = result.access_token;
+          refresh_token = result.refresh_token;
+          res.json({ success: true });
+        } else {
+          res.json(result);
+        }
       })
       .catch((error) => console.log(error));
   }

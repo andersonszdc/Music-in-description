@@ -5,15 +5,16 @@ import { TwitterApi } from "twitter-api-v2";
 import { authorization_spotify } from "./routes/spotify";
 import cors from "cors";
 
-const app = express();
-const port = 3000;
-
+const port = 5050;
 const corsOptions = {
-  origin: "http://example.com",
-  optionsSuccessStatus: 200,
+  origin: process.env.REDIRECT_URI,
 };
 
-app.use(authorization_spotify, cors(corsOptions));
+const app = express();
+
+app.use(cors(corsOptions));
+
+app.use(authorization_spotify);
 
 app.listen(port, () => console.log("🚀👨‍🚀 server running..."));
 
@@ -36,13 +37,14 @@ if (API_KEY_TWITTER && API_KEY_SECRET_TWITTER) {
     await userClient.appLogin();
     setInterval(async () => {
       const response = await fetch(
-        "http://localhost:3000/get-currently-playing"
+        "http://localhost:5050/get-currently-playing"
       );
       const result = await response.json();
 
       if (result.error) {
-        const res_refresh = await fetch("http://localhost:3000/refresh_token");
+        const res_refresh = await fetch("http://localhost:5050/refresh_token");
         const result_refresh = await res_refresh.json();
+        console.log(result);
         console.log(result_refresh);
       } else {
         if (result.message) {
