@@ -5,7 +5,7 @@ import { TwitterApi } from "twitter-api-v2";
 import { authorization_spotify } from "./routes/spotify";
 import cors from "cors";
 
-const port = 5050;
+const port = process.env.PORT || 4000;
 const corsOptions = {
   origin: process.env.REDIRECT_URI,
 };
@@ -36,12 +36,12 @@ if (API_KEY_TWITTER && API_KEY_SECRET_TWITTER) {
   (async () => {
     setInterval(async () => {
       const response = await fetch(
-        "http://localhost:5050/get-currently-playing"
+        `http://localhost:${port}/get-currently-playing`
       );
       const result = await response.json();
 
       if (result.error) {
-        await fetch("http://localhost:5050/refresh_token");
+        await fetch(`http://localhost:${port}/refresh_token`);
         console.log(result);
       } else {
         if (result.message) {
