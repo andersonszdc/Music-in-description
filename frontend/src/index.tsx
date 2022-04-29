@@ -4,7 +4,7 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "./pages/sign-in";
 import SignUp from "./pages/sign-up";
-import LoginLayout from "./components/login-layout";
+import LoginLayout from "./layouts/login";
 import Home from "./pages/home/index";
 
 const root = ReactDOM.createRoot(
