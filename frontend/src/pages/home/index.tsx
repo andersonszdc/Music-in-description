@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import "./App.css";
+import "./styles.css";
 
-const App = () => {
+const Home = () => {
   const location = useLocation();
   const [isLogged, setLogged] = useState(false);
 
@@ -30,7 +30,7 @@ const App = () => {
           <button className="btn-wrapper">
             <a
               className="btn-link btn-spotify"
-              href="http://localhost:5050/login"
+              href={process.env.REACT_APP_BASE_API_URL + "/login"}
             >
               <img src="/icons/spotify.svg" alt="spotify icon" />
               {isLogged ? "Logged" : "Log in with spotify"}
@@ -39,7 +39,7 @@ const App = () => {
           <button className="btn-wrapper">
             <a
               className="btn-link btn-twitter"
-              href="http://localhost:5050/login"
+              href={process.env.REACT_APP_BASE_API_URL + "/login"}
             >
               <img src="/icons/twitter.svg" alt="twitter icon" />
               Log in with twitter
@@ -51,4 +51,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
