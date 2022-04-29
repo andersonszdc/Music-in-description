@@ -1,10 +1,11 @@
 import React from "react";
 import Button from "../../components/button";
 import Input from "../../components/input";
+import { SignupWrapper } from "./styles";
 
 const SignUp = () => {
   return (
-    <div>
+    <SignupWrapper>
       <div>
         <p>start for free</p>
         <h1>
@@ -23,7 +24,7 @@ const SignUp = () => {
           <Button text="Create account" />
         </form>
       </div>
-    </div>
+    </SignupWrapper>
   );
 };
 

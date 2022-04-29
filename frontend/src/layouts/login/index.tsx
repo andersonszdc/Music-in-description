@@ -1,23 +1,26 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import { LoginWrapper } from "./styles";
+import "./styles.ts";
 
 const LoginLayout = () => {
   return (
-    <div>
-      <div>
-        <div>
-          <span className="logo" />
+    <LoginWrapper>
+      <section className="action">
+        <div className="logo">
+          <span className="logo-img" />
           <p>Update description.</p>
         </div>
         <Outlet />
-      </div>
-      <div>
+      </section>
+      <section className="banner">
         <img
+          className="banner-img"
           src="/images/login-banner.jpg"
           alt="homem de costas em um local escuro"
         />
-      </div>
-    </div>
+      </section>
+    </LoginWrapper>
   );
 };
 

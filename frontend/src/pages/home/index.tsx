@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import "./styles.css";
+import { HomeWrapper } from "./styles";
+import "./styles.ts";
 
 const Home = () => {
   const location = useLocation();
@@ -21,7 +22,7 @@ const Home = () => {
   }, [location]);
 
   return (
-    <main className="App">
+    <HomeWrapper>
       <section>
         <h1 className="title">
           Update twitter description with currently playing music
@@ -47,7 +48,7 @@ const Home = () => {
           </button>
         </div>
       </section>
-    </main>
+    </HomeWrapper>
   );
 };
 
