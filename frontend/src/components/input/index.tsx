@@ -1,4 +1,5 @@
 import React from "react";
+import { InputWrapper } from "./styles";
 
 interface InputProps {
   label: string;
@@ -6,11 +7,11 @@ interface InputProps {
 
 const Input = ({ label }: InputProps) => {
   return (
-    <div className="input-wrapper">
+    <InputWrapper>
       <label className="label">{label}</label>
-      <input className="input" />
-      <img src="/icons/account.svg" alt="ícone de usuário" />
-    </div>
+      <input className="input" placeholder={label} />
+      <img className="icon" src="/icons/account.svg" alt="ícone de usuário" />
+    </InputWrapper>
   );
 };
 

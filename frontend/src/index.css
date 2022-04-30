@@ -7,10 +7,8 @@
 body {
   font-family: "Montserrat", sans-serif;
   background-color: #0f1419;
+  color: #FFFFFF;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 button {
