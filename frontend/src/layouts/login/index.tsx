@@ -9,7 +9,7 @@ const LoginLayout = () => {
       <section className="action">
         <div className="logo">
           <span className="logo-img" />
-          <p>Update description.</p>
+          <p className="logo-name">Update description.</p>
         </div>
         <Outlet />
       </section>
