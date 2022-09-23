@@ -9,14 +9,14 @@ const {
   API_KEY_SECRET_TWITTER,
   ACCESS_TOKEN_TWITTER,
   ACCESS_TOKEN_SECRET_TWITTER,
-  REDIRECT_URI,
   CLIENT_ID_SPOTIFY,
   CLIENT_SECRET_SPOTIFY,
+  API_BASE_URL,
 } = process.env;
 
 const router = Router();
 
-const redirect_uri = REDIRECT_URI;
+const redirect_uri = API_BASE_URL + "/callback";
 const client_id = CLIENT_ID_SPOTIFY;
 const client_secret = CLIENT_SECRET_SPOTIFY;
 
