@@ -1,0 +1,10 @@
+name = "set-music"
+main = "src/index.ts"
+compatibility_date = "2022-09-23"
+
+kv_namespaces = [
+    { binding = "SPOTIFY", id = "bb6f04eb71f841cf874efc187d8cfca0", preview_id = "81905bfc1f8149ab9cc615f8250345ad" }
+]
+
+[triggers]
+crons = [ "* * * * *" ]
