@@ -34,7 +34,7 @@ export default {
     console.log(`access_token: ${access_token}`);
 
     const result = await fetch(
-      `http://localhost:4000/worker-test/?access_token=${access_token}`,
+      `${env.API_URL}/worker-test/?access_token=${access_token}`,
       {
         method: "GET",
       }
@@ -42,6 +42,7 @@ export default {
 
     // const response = await result.json();
     console.log(result.status);
+    console.log(env.API_URL);
   },
   async fetch(request: Request, env: Env) {
     const url = new URL(request.url);
