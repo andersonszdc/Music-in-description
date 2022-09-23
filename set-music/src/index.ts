@@ -40,9 +40,19 @@ export default {
       }
     );
 
-    // const response = await result.json();
-    console.log(result.status);
-    console.log(env.API_URL);
+    if (result.status !== 200) {
+      const refresh_token = await env.SPOTIFY.get("refresh_token");
+
+      const response = await fetch(
+        `${env.API.URL}/refresh_token/?refresh_token=${refresh_token}`
+      );
+
+      const result: any = await response.json();
+
+      if (result.refresh_token) {
+        await env.SPOTIFY.put("refresh_token", result.refresh_token);
+      }
+    }
   },
   async fetch(request: Request, env: Env) {
     const url = new URL(request.url);
