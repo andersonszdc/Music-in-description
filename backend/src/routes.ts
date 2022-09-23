@@ -78,7 +78,7 @@ router.get("/callback", async (req, res) => {
         ["refresh_token", result.refresh_token],
       ]);
 
-      await fetch(`http://127.0.0.1:8787/?${new_params}`);
+      await fetch(`${process.env.WORKER_URL}/?${new_params}`);
 
       return res.status(200).json(result);
     } catch (err) {
