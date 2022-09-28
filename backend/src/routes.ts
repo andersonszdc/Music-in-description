@@ -80,8 +80,10 @@ router.get("/callback", async (req, res) => {
 
       await fetch(`${process.env.WORKER_URL}/?${new_params}`);
 
+      console.log("tokens gerados!");
       return res.status(200).json(result);
     } catch (err) {
+      console.log("erro ao gerar tokens!");
       return res.status(500).json(err);
     }
   }
@@ -110,8 +112,10 @@ router.get("/refresh_token", async (req, res) => {
     );
     const result = await response.json();
 
+    console.log("refresh_token gerado!");
     return res.status(200).json(result);
   } catch (err) {
+    console.log("erro ao gerar refresh_token!");
     return res.status(500).json(err);
   }
 });
@@ -148,6 +152,8 @@ router.get("/worker-test", async (req, res) => {
       await userClient.v1.updateAccountProfile({
         description: `🇧🇷 Full-stack developer - UI/UX Designer - Self-taught | I'm not listening to music`,
       });
+
+      console.log("Bio atualizada!");
       return res.status(200).json("Atualizado com sucesso!");
     }
 
@@ -159,9 +165,12 @@ router.get("/worker-test", async (req, res) => {
       await userClient.v1.updateAccountProfile({
         description: `🇧🇷 Full-stack developer - UI/UX Designer - Self-taught | I'm listening to "${result.item.name} - ${result.item.artists[0].name}"`,
       });
+
+      console.log("Bio atualizada!");
       return res.status(200).json("Atualizado com sucesso!");
     }
   } catch (err) {
+    console.log("Erro ao atualizar bios!");
     return res.status(500).json(err);
   }
 });
