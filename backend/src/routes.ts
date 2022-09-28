@@ -171,6 +171,7 @@ router.get("/worker-test", async (req, res) => {
     }
   } catch (err) {
     console.log("Erro ao atualizar bios!");
+    console.log("access_token: " + access_token);
     return res.status(500).json(err);
   }
 });
