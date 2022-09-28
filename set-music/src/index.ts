@@ -32,8 +32,6 @@ export default {
 
     const access_token = await env.SPOTIFY.get("access_token");
 
-    console.log(`access_token: ${access_token}`);
-
     const result = await fetch(
       `${env.API_URL}/worker-test/?access_token=${access_token}`,
       {
@@ -50,8 +48,8 @@ export default {
 
       const result: any = await response.json();
 
-      if (result.refresh_token) {
-        await env.SPOTIFY.put("refresh_token", result.refresh_token);
+      if (result.access_token) {
+        await env.SPOTIFY.put("access_token", result.access_token);
       }
     }
   },
