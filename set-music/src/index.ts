@@ -14,6 +14,7 @@ export interface Env {
   // Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
   SPOTIFY: KVNamespace;
   //
+  API_URL: string;
   // Example binding to Durable Object. Learn more at https://developers.cloudflare.com/workers/runtime-apis/durable-objects/
   // MY_DURABLE_OBJECT: DurableObjectNamespace;
   //
@@ -44,7 +45,7 @@ export default {
       const refresh_token = await env.SPOTIFY.get("refresh_token");
 
       const response = await fetch(
-        `${env.API.URL}/refresh_token/?refresh_token=${refresh_token}`
+        `${env.API_URL}/refresh_token/?refresh_token=${refresh_token}`
       );
 
       const result: any = await response.json();
